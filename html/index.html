@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="오영현의 개인 포트폴리오 허브 페이지 — 프로필, 수업 시간표, 여행 기록을 모아둔 사이트입니다.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8D%80</text></svg>">
+    <title>Welcome SKALA</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="다크모드 전환" title="다크모드 전환">🌙</button>
+    <header>
+        <h1 class="fade-in-title">오영현의 유니버스 🍀</h1>
+        <p>저희 프로필, 학습 내용, 여행 기록을 모아둔 Hub 페이지입니다.</p>
+    </header>
+
+    <nav>
+        <h3>🗂️ 바로가기 메뉴</h3>
+        <ul>
+            <li><a href="myProfile.html">소개 (Profile)</a></li>
+            <li><a href="myClass.html">수업 시간표 (Class)</a></li>
+            <li><a href="myHoliday.html">휴일 계획 (Holiday)</a></li>
+            <li><a href="myTrip.html">여행 앨범 (Album)</a></li>
+            <li><a href="signUp.html">👤 회원가입 (Sign Up)</a></li>
+        </ul>
+    </nav>
+
+    <hr>
+
+    <main class="home-layout">
+        <section>
+            <h3>📌 오늘의 주요 소식</h3>
+
+            <article class="card">
+                <h4>최근 공지 및 업데이트</h4>
+                <h5>[업데이트] 여행 앨범에 동영상 추가 완료!</h5>
+                <p>삿포로 여행의 추억을 동영상으로 남겨보세요!</p>
+                <p><small>작성일: <time datetime="2026-07-15">2026년 7월 15일</time></small></p>
+            </article>
+
+            <article>
+                <h3>📷 이달의 베스트 컷</h3>
+                <figure class="polaroid">
+                    <img src="../media/도카치다케 설산.jpeg" alt="이달의 베스트 컷" width="300">
+                    <figcaption>📍 여행지: 일본 비에이역</figcaption>
+                </figure>
+            </article>
+        </section>
+
+        <aside>
+            <section class="info-section">
+                <h3>🐾 실시간 정보</h3>
+                <div class="card">
+                    <h5 id="currentLocation">현재 위치: 광주광역시 광산구</h5>
+                    <h5>추천 학습 사이트: <a href="https://www.w3schools.com" target="_blank">W3Schools</a></h5>
+                </div>
+                <section class="weather-section">
+                    <h3>🌤️ 실시간 세계 날씨</h3>
+
+                    <div class="city-select-row">
+                        <select id="city-select">
+                            <option value="none">도시를 선택하세요</option>
+                            <option value="37.56,126.97">대한민국 서울 🇰🇷</option>
+                            <option value="35.67,139.65">일본 도쿄 🇯🇵</option>
+                            <option value="48.85,2.35">프랑스 파리 🇫🇷</option>
+                            <option value="add-city">➕ 도시 추가...</option>
+                        </select>
+                        <button type="button" class="city-remove-btn" id="removeCityBtn" aria-label="이 도시 삭제" title="이 도시 삭제" style="display: none;">✕</button>
+                    </div>
+
+                    <dialog id="addCityDialog" class="mini-dialog">
+                        <button type="button" class="game-close" id="closeAddCityBtn" aria-label="닫기">✕</button>
+                        <h4>➕ 도시 추가</h4>
+                        <form id="citySearchForm" class="city-search-form">
+                            <input type="text" id="citySearchInput" placeholder="도시 이름 검색 (예: 런던)">
+                            <button type="submit" class="game-btn">검색</button>
+                        </form>
+                        <ul class="city-search-results" id="citySearchResults"></ul>
+                    </dialog>
+
+                    <div id="weather-box" class="weather-box">
+                        <p>도시를 선택하면 날씨 정보가 표시됩니다.</p>
+                    </div>
+                </section>
+            </section>
+
+            <section class="game-section">
+                <h3>🎮 자바스크립트천국</h3>
+                <button type="button" class="game-btn" id="openGameBtn">업다운 게임 🚀</button>
+                <dialog id="gameDialog" class="mini-dialog">
+                    <button type="button" class="game-close" id="closeGameBtn" aria-label="닫기">✕</button>
+                    <h4>🎮 업다운 게임</h4>
+                    <p class="game-msg" id="gameMessage">1~50 사이의 숫자를 맞혀보세요!</p>
+                    <form id="gameForm" class="game-form">
+                        <input type="number" id="guessInput" min="1" max="50" placeholder="숫자 입력" required>
+                        <button type="submit" class="game-btn">추측</button>
+                    </form>
+                    <p class="game-count">시도 횟수: <span id="attemptCount">0</span></p>
+                    <button type="button" class="game-reset" id="resetBtn">🔄 새 게임</button>
+                </dialog>
+
+                <button type="button" class="grade-btn" id="openGradeBtn">성적 계산기 📊</button>
+                <dialog id="gradeDialog" class="mini-dialog">
+                    <button type="button" class="game-close" id="closeGradeBtn" aria-label="닫기">✕</button>
+                    <h4>📊 성적 계산기</h4>
+                    <p class="grade-msg" id="gradeMessage">과목별 점수를 입력해 주세요 (0~100)</p>
+                    <form id="gradeForm" class="grade-form">
+                        <label><span class="grade-label-text">HTML</span> <input type="number" id="scoreHtml" min="0" max="100" required></label>
+                        <label><span class="grade-label-text">CSS</span> <input type="number" id="scoreCss" min="0" max="100" required></label>
+                        <label><span class="grade-label-text">JavaScript</span> <input type="number" id="scoreJs" min="0" max="100" required></label>
+                        <button type="submit" class="grade-btn">계산하기</button>
+                    </form>
+                    <button type="button" class="game-reset" id="resetGradeBtn">🔄 다시 입력</button>
+                </dialog>
+
+                <button type="button" class="game-btn" id="open2048Btn">2048 게임 🔢</button>
+                <dialog id="dialog2048" class="mini-dialog">
+                    <button type="button" class="game-close" id="close2048Btn" aria-label="닫기">✕</button>
+                    <h4>🔢 2048</h4>
+                    <p class="game-msg" id="msg2048">방향키로 타일을 움직여 2048을 만들어보세요!</p>
+                    <p class="game-count">점수: <span id="score2048">0</span></p>
+                    <div class="grid-2048" id="grid2048"></div>
+                    <button type="button" class="game-reset" id="reset2048Btn">🔄 새 게임</button>
+                </dialog>
+            </section>
+
+            <section class="bag-section">
+                <h3>🎒 내 가방</h3>
+                <button type="button" class="bag-btn" id="openBagBtn">가방 열기</button>
+                <dialog id="bagDialog" class="mini-dialog">
+                    <button type="button" class="game-close" id="closeBagBtn" aria-label="닫기">✕</button>
+                    <h4>🎒 내 가방</h4>
+                    <ul class="bag-list" id="bagList"></ul>
+                    <form id="bagForm" class="bag-form">
+                        <input type="text" id="bagItemName" placeholder="물품 이름" required>
+                        <input type="number" id="bagItemCount" min="1" value="1" required>
+                        <button type="submit" class="bag-btn">담기</button>
+                    </form>
+                </dialog>
+            </section>
+        </aside>
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>이메일 문의: dudgus2109@gmail.com</p>
+        <h6>© 2026 영현 포트폴리오. 모든 태그는 웹 표준 시멘틱 태그로 작성되었습니다.</h6>
+    </footer>
+    </div>
+
+    <script src="../script/theme.js"></script>
+    <script src="../script/upDown.js"></script>
+    <script src="../script/grade.js"></script>
+    <script src="../script/bag.js"></script>
+    <script src="../script/game2048.js"></script>
+    <script type="module" src="../script/realtimeInfo.js"></script>
+    <script type="module" src="../script/currentLocation.js"></script>
+</body>
+</html>
