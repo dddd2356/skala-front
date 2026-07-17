@@ -1,0 +1,29 @@
+.pw-match-msg {
+    display: block;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+.pw-match-msg.match {
+    color: var(--color-primary);
+}
+
+.pw-match-msg.mismatch {
+    color: var(--color-accent);
+}
+
+.email-fields {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.email-fields input {
+    width: 140px;
+    max-width: none;
+}
+
+.email-fields select {
+    width: auto;
+}

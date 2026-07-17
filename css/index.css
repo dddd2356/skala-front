@@ -1,0 +1,205 @@
+.home-layout {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.home-layout section {
+    flex: 2;
+}
+
+.home-layout aside {
+    flex: 1;
+}
+
+.card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 6px rgba(var(--color-primary-rgb), 0.06);
+}
+
+.game-section > button,
+.bag-section > button {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.bag-section {
+    margin-top: 12px;
+}
+
+.weather-section {
+    margin-top: 12px;
+}
+
+.city-select-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.city-select-row select {
+    flex: 1;
+    max-width: none;
+    margin-bottom: 0;
+}
+
+.city-remove-btn {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--color-border-medium);
+    border-radius: 6px;
+    background: none;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.city-remove-btn:hover {
+    background-color: var(--color-bg-hover);
+    color: var(--color-accent);
+}
+
+.weather-box {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.weather-box h4 {
+    margin: 0 0 8px 0;
+}
+
+.weather-box p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: var(--color-text);
+}
+
+.city-search-form {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.city-search-form input {
+    flex: 1;
+    max-width: none;
+}
+
+.city-search-results {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+}
+
+.city-search-results li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 13px;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.city-search-results li:last-child {
+    border-bottom: none;
+}
+
+#removeCityBtn {
+    margin-bottom: 10px;
+}
+
+.bag-btn {
+    font-family: inherit;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.bag-btn:hover {
+    background-color: var(--color-secondary);
+}
+
+.bag-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px 0;
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.bag-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 14px;
+    color: var(--color-text);
+}
+
+.bag-list li:last-child {
+    border-bottom: none;
+}
+
+.bag-list .bag-empty {
+    justify-content: center;
+    color: var(--color-text-muted-light);
+    border-bottom: none;
+}
+
+.bag-remove {
+    font-family: inherit;
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.bag-remove:hover {
+    color: var(--color-accent);
+}
+
+.bag-form {
+    display: flex;
+    gap: 6px;
+}
+
+.bag-form input[type="text"] {
+    flex: 1;
+    max-width: none;
+}
+
+.bag-form input[type="number"] {
+    width: 60px;
+    max-width: 60px;
+    flex: 0 0 60px;
+}
+
+@media (max-width: 786px) {
+    .home-layout {
+        flex-direction: column;
+    }
+}
