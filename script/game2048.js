@@ -6,6 +6,7 @@
     var tilesById = {};
     var grid = [];
     var score = 0;
+    var isMoving = false;
 
     var openBtn = document.getElementById('open2048Btn');
     var closeBtn = document.getElementById('close2048Btn');
@@ -94,6 +95,7 @@
         grid = emptyGrid();
         score = 0;
         nextId = 1;
+        isMoving = false;
         scoreEl.textContent = score;
         setMessage('방향키로 타일을 움직여 2048을 만들어보세요!');
         renderBackgroundCells();
@@ -227,6 +229,8 @@
             } else if (!hasMoves()) {
                 setMessage('😢 더 이상 움직일 칸이 없어요. 게임 오버!', 'down');
             }
+
+            isMoving = false;
         }, TRANSITION_MS);
     }
 
@@ -269,8 +273,11 @@
 
         e.preventDefault();
 
+        if (isMoving) return;
+
         var result = move(direction);
         if (result.changed) {
+            isMoving = true;
             finalizeMove(result);
         }
     }

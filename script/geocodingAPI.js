@@ -34,8 +34,13 @@ export async function reverseGeocode(lat, lon) {
 
         const data = await response.json();
 
+        const administrative = (data.localityInfo && data.localityInfo.administrative) || [];
+        const district = administrative.find(function (item) {
+            return item.adminLevel === 6 && /(시|군|구)$/.test(item.name);
+        });
+
         return {
-            city: data.city || data.locality || '',
+            city: (district && district.name) || data.locality || data.city || '',
             region: data.principalSubdivision || ''
         };
     } catch (error) {
