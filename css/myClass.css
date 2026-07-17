@@ -1,0 +1,38 @@
+.table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-scroll table {
+    min-width: 600px;
+}
+
+.timetable-toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.timetable-toolbar .game-btn,
+.timetable-toolbar .game-reset {
+    width: auto;
+}
+
+.tt-empty {
+    color: var(--color-text-muted-light);
+}
+
+.tt-editing .tt-class,
+.tt-editing .tt-empty {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.tt-editing .tt-class:hover,
+.tt-editing .tt-empty:hover {
+    background-color: var(--color-bg-hover);
+}
+
+.tt-editing .tt-empty::after {
+    content: '+';
+}

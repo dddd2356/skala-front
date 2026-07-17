@@ -5,13 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>나의 수업 일과</title>
         <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/myClass.css">
     </head>
     <body>
         <div class="container">
         <a href="index.html" class="back-link" aria-label="홈으로 가기" title="홈으로">←</a>
         <h1>🗓️ 나의 강의 시간표</h1>
+        <div class="timetable-toolbar">
+            <button type="button" class="game-btn" id="editTimetableBtn">✏️ 시간표 편집</button>
+            <button type="button" class="game-reset" id="resetTimetableBtn">🔄 초기화</button>
+        </div>
+        <p class="game-msg" id="timetableMsg">편집 버튼을 누르면 칸을 클릭해서 과목을 추가·수정·삭제할 수 있어요.</p>
         <div class="table-scroll">
-        <table>
+        <table id="timetableTable">
             <thead>
                 <th>시간</th>
                 <th>월요일</th>
@@ -20,57 +26,33 @@
                 <th>목요일</th>
                 <th>금요일</th>
             </thead>
-            <tbody>
-                <tr>
-                    <td>09:00~10:00</td>
-                    <td rowspan="3">Vue.js<br>웹 프레임워크 🖥️</td>
-                    <td rowspan="2">네트워크<br>보안 기초 🛡️</td>
-                    <td rowspan="3">웹 시스템<br>설계 및 분석 🏗️</td>
-                    <td>IT 트렌드 특강 📰</td>
-                    <td rowspan="3">자바스크립트<br>심화 실습 ⚡</td>
-                </tr>
-                <tr>
-                    <td>10:00~11:00</td>
-                    <td rowspan="2">데이터베이스<br>SQL 실습 🗄️</td>
-                </tr>
-                <tr>
-                    <td>11:00~12:00</td>
-                    <td>알고리즘 문제풀이 🧩</td>
-                </tr>
-                <tr>
-                    <td>12:00~13:00</td>
-                    <td colspan="5">🍽️ 점심시간 🍽️</td>
-                </tr>
-                <tr>
-                    <td>13:00~14:00</td>
-                    <td rowspan="4">UI/UX<br>디자인 표준 🎨</td>
-                    <td rowspan="2">리눅스<br>시스템 관리 🐧</td>
-                    <td rowspan="2">클라우드<br>AWS 기초 ☁️</td>
-                    <td rowspan="3">자료구조 📊</td>
-                    <td>개인프로젝트 💻</td>
-                </tr>
-                <tr>
-                    <td>14:00~15:00</td>
-                    <td rowspan="3">오픈소스<br>소프트웨어 🌐</td>
-                </tr>
-                <tr>
-                    <td>15:00~16:00</td>
-                    <td rowspan="3">Git & GitHub<br>버전 관리 🐙</td>
-                    <td rowspan="3">인공지능<br>머신러닝 기초 🤖</td>
-                </tr>
-                <tr>
-                    <td>16:00~17:00</td>
-                    <td rowspan="2">빅데이터</br>분석 실무 📈</td>
-                </tr>
-                <tr>
-                    <td>17:00~18:00</td>
-                    <td rowSpan="1">취업 창업 특강 💼</td>
-                    <td rowspan="1">주간 회고 📝</td>
-                </tr>
-            </tbody>
+            <tbody id="timetableBody"></tbody>
         </table>
         </div>
+
+        <dialog id="classEditDialog" class="mini-dialog">
+            <button type="button" class="game-close" id="closeClassEditBtn" aria-label="닫기">✕</button>
+            <h4 id="classEditTitle">📚 과목 추가</h4>
+            <p class="game-msg" id="classEditMsg"></p>
+            <form id="classEditForm" class="grade-form">
+                <label><span class="grade-label-text">요일</span>
+                    <select id="classDaySelect" required></select>
+                </label>
+                <label><span class="grade-label-text">시작 시간</span>
+                    <select id="classStartSelect" required></select>
+                </label>
+                <label><span class="grade-label-text">길이(시간)</span>
+                    <select id="classSpanSelect" required></select>
+                </label>
+                <label><span class="grade-label-text">과목명</span>
+                    <textarea id="classLabelInput" rows="2" maxlength="60" required placeholder="예: 자료구조&#10;(줄바꿈은 Enter로)"></textarea>
+                </label>
+                <button type="submit" class="grade-btn">저장</button>
+            </form>
+            <button type="button" class="game-reset" id="deleteClassBtn">🗑️ 이 과목 삭제</button>
+        </dialog>
         </div>
     <script src="../script/theme.js"></script>
+    <script src="../script/timetable.js"></script>
     </body>
 </html>
